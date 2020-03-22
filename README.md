@@ -1,2 +1,2 @@
-# test_automation_using_pytest
-using pytest-bdd to automate testing
+# sam_tech_training
+technical training for Automation QA Engineer
