@@ -2,6 +2,8 @@ correct = [[1,2,3],
            [2,3,1],
            [3,1,2]]
 
+correct2 = [1]
+
 incorrect = [[1,2,3,4],
              [2,3,1,3],
              [3,1,2,3],
@@ -30,9 +32,12 @@ incorrect5 = [ [1, 1.5],
 def check_sudoku(square_list):
     sudoku_len = len(square_list)
 
-    # 1 row, 1 column square_list is always a sudoku
+    # square_list has 1 row, 1 column
     if sudoku_len == 1:
-        return True
+        if square_list[0] == 1:
+            return True
+        else:
+            return False
 
     # check for rows
     for row in square_list:
@@ -64,6 +69,9 @@ def check_sudoku(square_list):
     
 
 print(check_sudoku(correct))
+#>>> True
+
+print(check_sudoku(correct2))
 #>>> True
 
 print(check_sudoku(incorrect))
