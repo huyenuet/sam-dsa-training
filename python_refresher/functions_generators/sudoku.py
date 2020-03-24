@@ -57,10 +57,6 @@ def check_sudoku(square_list):
             col.append(square_list[row_idx][col_idx])
 
         for num in col:
-            # number is out of range -> return False
-            if num not in range(1, sudoku_len+1):
-                return False
-
             # number in column appears more than 1 time -> return False
             if col.count(num) > 1:
                 return False
