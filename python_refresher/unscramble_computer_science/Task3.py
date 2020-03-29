@@ -45,50 +45,46 @@ The percentage should have 2 decimal digits
 """
 
 
+def get_phone_number_code(phone_num):
+    if phone_num[:3] == '140':
+        return '140'
+    if phone_num[0] == "(":
+        return phone_num[1:].split(")")[0]
+    if phone_num[0] in ('7', '8', '9'):
+        return phone_num[:4]
+    return
+
+
 # PART A
-
-# loop all over file calls
-# if from_number start_with (080):
-#    if to_number start_with '(': add code to area_code_list
-#    elif to_number contains space " ": add 4 first digits to mobile_code
-#    else: do nothing
-
-# sort final_list asc
-
-
-def numbers_code_called_by_people_in_bangalore(call_list):
-    code_list = []
+def get_phone_number_code_receive_call_from_people_in_bangalore(call_list):
+    code_set = set()
     for call in call_list:
-        from_num = call[0]
-        to_num = call[1]
-        if from_num[0:5] == "(080)":
-            if to_num[0] == "(" and to_num[1:4] not in code_list:
-                code_list.append(to_num[1:4])
-            elif to_num[5] == " " and to_num[0:4] not in code_list:
-                code_list.append(to_num[0:4])
-            else:
-                pass
-    return code_list
+        from_phone_number_code = get_phone_number_code(call[0])
+        to_phone_number_code = get_phone_number_code(call[1])
+        if from_phone_number_code == "080":
+            if to_phone_number_code != "140":
+                code_set.add(to_phone_number_code)
+    return code_set
 
 
 def test_part_a():
-    code_list_called_by_people_in_bangalore = numbers_code_called_by_people_in_bangalore(calls)
+    code_list_called_by_people_in_bangalore = get_phone_number_code_receive_call_from_people_in_bangalore(calls)
     print("The numbers called by people in Bangalore have codes:")
-    code_list_called_by_people_in_bangalore.sort()
-    for code in code_list_called_by_people_in_bangalore:
+    sorted_code_list = sorted(code_list_called_by_people_in_bangalore)
+    for code in sorted_code_list:
         print(code)
 
 
-# part B
-def percent_call_from_fixed_line_to_fixed_line_in_bangalore(call_list):
+# PART B
+def get_percent_call_from_fixed_line_to_fixed_line_in_bangalore(call_list):
     calls_made_by_fixed_line_in_bangalore = 0
     calls_between_fixed_lines_in_bangalore = 0
     for call in call_list:
-        from_num = call[0]
-        to_num = call[1]
-        if from_num[0:5] == "(080)":
+        from_phone_number_code = get_phone_number_code(call[0])
+        to_phone_number_code = get_phone_number_code(call[1])
+        if from_phone_number_code == "080":
             calls_made_by_fixed_line_in_bangalore += 1
-            if to_num[0:5] == "(080)":
+            if to_phone_number_code == "080":
                 calls_between_fixed_lines_in_bangalore += 1
 
     return (calls_between_fixed_lines_in_bangalore / calls_made_by_fixed_line_in_bangalore)*100 \
@@ -96,7 +92,7 @@ def percent_call_from_fixed_line_to_fixed_line_in_bangalore(call_list):
 
 
 def test_part_b():
-    percentage = round(percent_call_from_fixed_line_to_fixed_line_in_bangalore(calls), 2)
+    percentage = round(get_percent_call_from_fixed_line_to_fixed_line_in_bangalore(calls), 2)
     print(f"{percentage} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
 
 
