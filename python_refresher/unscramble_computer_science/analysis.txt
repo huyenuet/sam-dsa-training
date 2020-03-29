@@ -5,33 +5,34 @@ TASK 0: O(1)
 """
 
 """
-TASK 1: O(n^2)
+TASK 1: O(n)
+- count_diff_phone_numbers: O(n)
 """
 
 """
-TASK 2 : O(n^2)
+TASK 2 : O(n)
 In detail:
 - time_spent_on_each_call: O(1)
-- phone_number_and_total_call_time: O(n^2)
-- longest_on_call_time_phone_number_in_period: O(n^2)
+- get_phone_number_and_total_call_time: O(n)
+- get_phone_number_with_longest_call_time_in_period: O(n)
 """
 
 """
 TASK 3:
-- PART A: O(n^2)
+- PART A: O(n.log(n))
 - PART B: O(n)
 In detail:
-- numbers_code_called_by_people_in_bangalore: O(n^2)
-- test_part_a: O(n^2)
-- percent_call_from_fixed_line_to_fixed_line_in_bangalore: O(n)
+- get_phone_number_code_receive_call_from_people_in_bangalore: O(n)
+- test_part_a: O(n.log(n))
+- get_percent_call_from_fixed_line_to_fixed_line_in_bangalore: O(n)
 - test_part_b: O(n)
 """
 
 """
-TASK 4: O(n^2)
+TASK 4: O(n.log(n))
 In Detail:
-- caller_n_receiver_list: O(n)
-- sender_n_receiver_list: O(n)
-- telemarketers_numbers: O(n^2)
-- test: O(n^2)
+- get_caller_and_receiver_set: O(n)
+- get_sender_and_receiver_set: O(n)
+- find_telemarketers_numbers: O(n)
+- test: O(n.log(n))
 """
