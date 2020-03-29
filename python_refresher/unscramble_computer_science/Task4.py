@@ -26,48 +26,85 @@ The list of numbers should be print out one per line in lexicographic order with
 """
 
 
-# get caller_number and receiver_number lists from calls file
-def caller_n_receiver_list(call_list):
-    caller_list = []
-    call_receiver_list = []
+# get caller_number and receiver_number sets from calls file
+def get_caller_and_receiver_set(call_list):
+    caller_set = set()
+    receiver_set = set()
     for call in call_list:
-        caller_list.append(call[0])
-        call_receiver_list.append(call[1])
-    return caller_list, call_receiver_list
+        caller_set.add(call[0])
+        receiver_set.add(call[1])
+    return caller_set, receiver_set
 
 
-# get sender_number and receiver_number lists from texts file
-def sender_n_receiver_list(sms_list):
-    sender_list = []
-    sms_receiver_list = []
+# get sender_number and receiver_number sets from texts file
+def get_sender_and_receiver_set(sms_list):
+    sender_set = set()
+    receiver_set = set()
     for sms in sms_list:
-        sender_list.append(sms[0])
-        sms_receiver_list.append(sms[1])
-    return sender_list, sms_receiver_list
+        sender_set.add(sms[0])
+        receiver_set.add(sms[1])
+    return sender_set, receiver_set
 
 
 # get possible telemarketers' numbers
-def telemarketers_numbers(call_list, sms_list):
-    call_caller_list, call_receiver_list = caller_n_receiver_list(call_list)
-    sms_sender_list, sms_receiver_list = sender_n_receiver_list(sms_list)
-    telemarketers_numbers_list = []
-    for caller in call_caller_list:
-        if (
-            caller not in call_receiver_list and
-            caller not in sms_sender_list and
-            caller not in sms_receiver_list and
-            caller not in telemarketers_numbers_list
-        ):
-            telemarketers_numbers_list.append(caller)
-    return telemarketers_numbers_list
+def find_telemarketers_numbers(call_list, sms_list):
+    call_caller_set, call_receiver_set = get_caller_and_receiver_set(call_list)
+    sms_sender_set, sms_receiver_set = get_sender_and_receiver_set(sms_list)
+    return call_caller_set - (call_receiver_set | sms_sender_set | sms_receiver_set)
 
 
 def test():
-    telemarketers_numbers_list = telemarketers_numbers(calls, texts)
-    telemarketers_numbers_list.sort()
+    telemarketers_numbers_set = find_telemarketers_numbers(calls, texts)
+    telemarketers_numbers_list = sorted(telemarketers_numbers_set)
     print("These numbers could be telemarketers: ")
     for number in telemarketers_numbers_list:
         print(number)
 
 
 test()
+
+# expected result:
+# 43 telemarketers
+# (022)37572285
+# (022)65548497
+# (022)68535788
+# (022)69042431
+# (040)30429041
+# (044)22020822
+# (0471)2171438
+# (0471)6579079
+# (080)20383942
+# (080)25820765
+# (080)31606520
+# (080)40362016
+# (080)60463379
+# (080)60998034
+# (080)62963633
+# (080)64015211
+# (080)69887826
+# (0821)3257740
+# 1400481538
+# 1401747654
+# 1402316533
+# 1403072432
+# 1403579926
+# 1404073047
+# 1404368883
+# 1404787681
+# 1407539117
+# 1408371942
+# 1408409918
+# 1408672243
+# 1409421631
+# 1409668775
+# 1409994233
+# 74064 66270
+# 78291 94593
+# 87144 55014
+# 90351 90193
+# 92414 69419
+# 94495 03761
+# 97404 30456
+# 97407 84573
+# 97442 45192
+# 99617 25274
