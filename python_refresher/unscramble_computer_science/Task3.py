@@ -100,3 +100,48 @@ print("-------------- PART A ---------------")
 test_part_a()
 print("-------------- PART B ---------------")
 test_part_b()
+
+# expected output
+# -------------- PART A ---------------
+# The numbers called by people in Bangalore have codes:
+# 022
+# 040
+# 04344
+# 044
+# 04546
+# 0471
+# 080
+# 0821
+# 7406
+# 7795
+# 7813
+# 7829
+# 8151
+# 8152
+# 8301
+# 8431
+# 8714
+# 9008
+# 9019
+# 9035
+# 9036
+# 9241
+# 9242
+# 9341
+# 9342
+# 9343
+# 9400
+# 9448
+# 9449
+# 9526
+# 9656
+# 9738
+# 9740
+# 9741
+# 9742
+# 9844
+# 9845
+# 9900
+# 9961
+# -------------- PART B ---------------
+# 24.81 percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.
