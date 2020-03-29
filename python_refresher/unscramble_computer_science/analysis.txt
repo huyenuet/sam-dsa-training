@@ -1,0 +1,37 @@
+Calculate worst case Big O:
+
+"""
+TASK 0: O(1)
+"""
+
+"""
+TASK 1: O(n^2)
+"""
+
+"""
+TASK 2 : O(n^2)
+In detail:
+- time_spent_on_each_call: O(1)
+- phone_number_and_total_call_time: O(n^2)
+- longest_on_call_time_phone_number_in_period: O(n^2)
+"""
+
+"""
+TASK 3:
+- PART A: O(n^2)
+- PART B: O(n)
+In detail:
+- numbers_code_called_by_people_in_bangalore: O(n^2)
+- test_part_a: O(n^2)
+- percent_call_from_fixed_line_to_fixed_line_in_bangalore: O(n)
+- test_part_b: O(n)
+"""
+
+"""
+TASK 4: O(n^2)
+In Detail:
+- caller_n_receiver_list: O(n)
+- sender_n_receiver_list: O(n)
+- telemarketers_numbers: O(n^2)
+- test: O(n^2)
+"""
