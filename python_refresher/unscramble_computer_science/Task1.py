@@ -20,15 +20,22 @@ Print a message:
 """
 
 
-def count_diff_phone_numbers(num_list):
-    distinct_num_list = []
+def count_diff_phone_numbers(num_list, distinct_num_list=None):
+    if distinct_num_list is None:
+        distinct_num_list = []
     for item in num_list:
         if item[0] not in distinct_num_list:
             distinct_num_list.append(item[0])
         if item[1] not in distinct_num_list:
             distinct_num_list.append(item[1])
-    return len(distinct_num_list)
+    return distinct_num_list
 
 
-print(count_diff_phone_numbers(texts))
-print(count_diff_phone_numbers(calls))
+def test():
+    distinct_num_list = count_diff_phone_numbers(calls)
+    distinct_num_list = count_diff_phone_numbers(texts, distinct_num_list)
+    distinct_number_count = len(distinct_num_list)
+    print(f"There are {distinct_number_count} different telephone numbers in the records.")
+
+
+test()
