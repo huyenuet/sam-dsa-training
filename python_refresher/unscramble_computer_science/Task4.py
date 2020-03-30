@@ -27,30 +27,30 @@ The list of numbers should be print out one per line in lexicographic order with
 
 
 # get caller_number and receiver_number sets from calls file
-def get_caller_and_receiver_set(call_list):
-    caller_set = set()
-    receiver_set = set()
+def get_call_callers_and_receivers(call_list):
+    callers = set()
+    receivers = set()
     for call in call_list:
-        caller_set.add(call[0])
-        receiver_set.add(call[1])
-    return caller_set, receiver_set
+        callers.add(call[0])
+        receivers.add(call[1])
+    return callers, receivers
 
 
 # get sender_number and receiver_number sets from texts file
-def get_sender_and_receiver_set(sms_list):
+def get_sms_senders_and_receivers(sms_list):
     sender_set = set()
-    receiver_set = set()
+    receivers = set()
     for sms in sms_list:
         sender_set.add(sms[0])
-        receiver_set.add(sms[1])
-    return sender_set, receiver_set
+        receivers.add(sms[1])
+    return sender_set, receivers
 
 
 # get possible telemarketers' numbers
 def find_telemarketers_numbers(call_list, sms_list):
-    call_caller_set, call_receiver_set = get_caller_and_receiver_set(call_list)
-    sms_sender_set, sms_receiver_set = get_sender_and_receiver_set(sms_list)
-    return call_caller_set - (call_receiver_set | sms_sender_set | sms_receiver_set)
+    call_callers, call_receivers = get_call_callers_and_receivers(call_list)
+    sms_sender_set, sms_receivers = get_sms_senders_and_receivers(sms_list)
+    return call_callers - (call_receivers | sms_sender_set | sms_receivers)
 
 
 def test():
