@@ -4,7 +4,7 @@ It's ok if you don't understand how to read files
 """
 import csv
 from collections import defaultdict
-from datetime import datetime, timedelta
+from datetime import datetime
 
 with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
