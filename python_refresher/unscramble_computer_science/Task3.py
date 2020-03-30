@@ -62,8 +62,7 @@ def get_phone_number_code_receive_call_from_people_in_bangalore(call_list):
         from_phone_number_code = get_phone_number_code(call[0])
         to_phone_number_code = get_phone_number_code(call[1])
         if from_phone_number_code == "080":
-            if to_phone_number_code != "140":
-                code_set.add(to_phone_number_code)
+            code_set.add(to_phone_number_code)
     return code_set
 
 
