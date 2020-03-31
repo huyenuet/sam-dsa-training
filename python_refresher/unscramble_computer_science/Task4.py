@@ -38,26 +38,26 @@ def get_call_callers_and_receivers(call_list):
 
 # get sender_number and receiver_number sets from texts file
 def get_sms_senders_and_receivers(sms_list):
-    sender_set = set()
+    senders = set()
     receivers = set()
     for sms in sms_list:
-        sender_set.add(sms[0])
+        senders.add(sms[0])
         receivers.add(sms[1])
-    return sender_set, receivers
+    return senders, receivers
 
 
 # get possible telemarketers' numbers
-def find_telemarketers_numbers(call_list, sms_list):
+def find_telemarketer_numbers(call_list, sms_list):
     call_callers, call_receivers = get_call_callers_and_receivers(call_list)
-    sms_sender_set, sms_receivers = get_sms_senders_and_receivers(sms_list)
-    return call_callers - (call_receivers | sms_sender_set | sms_receivers)
+    sms_senders, sms_receivers = get_sms_senders_and_receivers(sms_list)
+    return call_callers - (call_receivers | sms_senders | sms_receivers)
 
 
 def test():
-    telemarketers_numbers_set = find_telemarketers_numbers(calls, texts)
-    telemarketers_numbers_list = sorted(telemarketers_numbers_set)
+    telemarketer_number_set = find_telemarketer_numbers(calls, texts)
+    telemarketer_number_list = sorted(telemarketer_number_set)
     print("These numbers could be telemarketers: ")
-    for number in telemarketers_numbers_list:
+    for number in telemarketer_number_list:
         print(number)
 
 
