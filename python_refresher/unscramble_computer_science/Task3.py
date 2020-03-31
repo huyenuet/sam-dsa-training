@@ -86,7 +86,7 @@ def get_percent_call_from_fixed_line_to_fixed_line_in_bangalore(call_list):
             if to_phone_number_code == "080":
                 calls_between_fixed_lines_in_bangalore += 1
 
-    return (calls_between_fixed_lines_in_bangalore / calls_made_by_fixed_line_in_bangalore)*100 \
+    return (calls_between_fixed_lines_in_bangalore / calls_made_by_fixed_line_in_bangalore) * 100 \
         if calls_made_by_fixed_line_in_bangalore > 0 else 0
 
 
