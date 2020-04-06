@@ -4,8 +4,8 @@ technical training for Automation QA Engineer
 ## Time Complexity
 - approximate
 - best case, average case, worst case
-- [[https://www.bigocheatsheet.com/][Big-O Cheatsheet]]
-- [[https://wiki.python.org/moin/TimeComplexity][Python Complexities]] 
+- [Big-O Cheatsheet](https://www.bigocheatsheet.com/)
+- [Python Complexities](https://wiki.python.org/moin/TimeComplexity)
 
 ## Data structure
 ### List
