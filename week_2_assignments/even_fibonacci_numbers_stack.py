@@ -25,3 +25,6 @@ print(
     "By considering the terms in the Fibonacci sequence whose values do not exceed four million, the sum of the even-valued terms is:"
 )
 print(find_sum_of_even_fibonacci_numbers())
+
+# expected value
+# 1485607536
