@@ -5,10 +5,11 @@ the duplicates. The order should remain the same.
 
 
 def remove_duplicated_numbers(ls: list):
-    new_set = set()
+    new_list = []
     for number in ls:
-        new_set.add(number)
-    return list(new_set)
+        if number not in new_list:
+            new_list.append(number)
+    return new_list
 
 
 print(remove_duplicated_numbers([1, 2, 4, 1, 6]))
