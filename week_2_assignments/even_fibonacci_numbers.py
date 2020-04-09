@@ -1,7 +1,4 @@
-threshold = 4000000000
-
-
-def find_sum_of_even_fibonacci_numbers():
+def find_sum_of_even_fibonacci_numbers(threshold):
     fibo_1 = 1
     fibo_2 = 1
     even_sum = 0
@@ -19,7 +16,7 @@ def find_sum_of_even_fibonacci_numbers():
 print(
     "By considering the terms in the Fibonacci sequence whose values do not exceed four million, the sum of the even-valued terms is:"
 )
-print(find_sum_of_even_fibonacci_numbers())
+print(find_sum_of_even_fibonacci_numbers(4000000000))
 
 # expected value
 # 1485607536
