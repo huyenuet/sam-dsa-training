@@ -3,17 +3,17 @@ from data_structures.linked_lists.node import Node
 
 class Stack:
     def __init__(self):
-        self.head = None
+        self.top = None
         self.num_elements = 0
 
     def push(self, value):
         new_node = Node(value)
-        if self.head is None:
-            self.head = new_node
+        if self.top is None:
+            self.top = new_node
         else:
-            # place the new node at the head of the linked list (top)
-            new_node.next = self.head
-            self.head = new_node
+            # place the new node at the top of the stack
+            new_node.next = self.top
+            self.top = new_node
 
         self.num_elements += 1
 
@@ -26,26 +26,26 @@ class Stack:
     def pop(self):
         """
             Check if the stack is empty and, if it is, return None
-            Get the value from the head node and put it in a local variable
-            Move the head so that it refers to the next item in the list
+            Get the value from the top node and put it in a local variable
+            Move the top so that it refers to the next item in the list
             Return the value we got earlier
         """
         if self.is_empty():
             return None
 
-        top_value = self.head.value
+        top_value = self.top.value
         if self.size() == 1:
-            self.head = None
+            self.top = None
         else:
-            self.head = self.head.next
+            self.top = self.top.next
 
         self.num_elements -= 1
         return top_value
 
     def top(self):
-        if self.head is None:
+        if self.top is None:
             return None
-        return self.head.value
+        return self.top.value
 
 
 def test():
