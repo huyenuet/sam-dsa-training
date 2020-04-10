@@ -1,4 +1,4 @@
-from data_structures.queue.queues_linked_list import Queue
+from data_structures.queue.double_ended_queue import Queue
 from data_structures.stack.stack_linkedlist import Stack
 
 
