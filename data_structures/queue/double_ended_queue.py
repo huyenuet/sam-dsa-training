@@ -19,7 +19,7 @@ class Queue:
         self.num_elements += 1
             
     def dequeue(self):
-        if self.is_empty():
+        if self.head is None:
             return None
         value = self.head.value          # copy the value to a local variable
         self.head = self.head.next       # shift the head (i.e., the front of the queue)
