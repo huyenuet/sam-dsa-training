@@ -19,6 +19,9 @@ class Stack:
             return None
         return self.stack[-1]
 
+    def size(self):
+        return len(self.stack)
+
 
 def test():
     # Setup
@@ -44,4 +47,4 @@ def test():
     print("Pass" if (stack.size() == 3) else "Fail")
 
 
-test()
+# test()
