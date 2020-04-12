@@ -42,7 +42,7 @@ class Stack:
         self.num_elements -= 1
         return top_value
 
-    def top(self):
+    def peek(self):
         if self.top is None:
             return None
         return self.top.value
@@ -70,6 +70,7 @@ def test():
     print("Pass" if (stack.pop() == 30) else "Fail")
     stack.push(50)
     print("Pass" if (stack.size() == 3) else "Fail")
+    print("Pass" if (stack.peek() == 20) else "Fail")
 
 
 # test()
