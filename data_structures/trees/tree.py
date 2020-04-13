@@ -107,3 +107,23 @@ class Tree(object):
                 s += "\n" + str(node)
                 previous_level += 1
         return s
+
+    def search(self, value):
+        node = self.get_root()
+        if node is None:
+            return False
+        new_node = Node(value)
+        while True:
+            comparison = self.compare(new_node, node)
+            if comparison == 0:
+                return node
+            elif comparison == 1:
+                if node.has_right_child():
+                    node = node.get_right_child()
+                else:
+                    return False
+            else:
+                if node.has_left_child():
+                    node = node.get_left_child()
+                else:
+                    return False
