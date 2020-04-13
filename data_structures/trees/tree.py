@@ -12,6 +12,63 @@ class Tree(object):
     def get_root(self):
         return self.root
 
+    def compare(self, node_1, node_2):
+        if node_1.get_value() == node_2.get_value():
+            return 0
+        elif node_1.get_value() > node_2.get_value():
+            return 1
+        else:
+            return -1
+
+    def insert_with_loop(self, value):
+        new_node = Node(value)
+        node = self.root
+        if node is None:
+            self.root = new_node
+            return
+
+        comparison = self.compare(node, new_node)
+        while True:
+            if comparison == -1:
+                if node.has_right_child():
+                    node = node.get_right_child()
+                else:
+                    node.set_right_child(new_node)
+                    break
+            elif comparison == 1:
+                if node.has_left_child():
+                    node = node.get_left_child()
+                else:
+                    node.set_left_child(new_node)
+                    break
+            else:
+                node.set_value(value)
+                break
+
+    def insert_with_recursion(self, value):
+        node = self.get_root()
+        new_node = Node(value)
+        if node is None:
+            self.set_root(new_node)
+            return
+
+        self._insert_recursively(node, new_node)
+
+    def _insert_recursively(self, node, new_node):
+        comparison = self.compare(node, new_node)
+        if comparison == 1:
+            if node.has_left_child():
+                self._insert_recursively(node.get_left_child(), new_node)
+            else:
+                node.set_left_child(new_node)
+        elif comparison == -1:
+            if node.has_right_child():
+                self._insert_recursively(node.get_right_child(), new_node)
+            else:
+                node.set_right_child(new_node)
+        else:
+            node.set_value(new_node.get_value())
+
     def __repr__(self):
         root = self.root
         level = 0
