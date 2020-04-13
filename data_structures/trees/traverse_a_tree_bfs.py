@@ -24,4 +24,5 @@ def breadth_first_search(tree: Tree):
     return visit_order
 
 
-print(breadth_first_search(tree))
+print(tree)
+print("\nbreadth first search order:\n", breadth_first_search(tree))
