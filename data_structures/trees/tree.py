@@ -27,8 +27,8 @@ class Tree(object):
             self.root = new_node
             return
 
-        comparison = self.compare(node, new_node)
         while True:
+            comparison = self.compare(node, new_node)
             if comparison == -1:
                 if node.has_right_child():
                     node = node.get_right_child()
