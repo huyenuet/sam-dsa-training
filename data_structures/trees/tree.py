@@ -84,18 +84,18 @@ class Tree(object):
                 continue
             else:
                 visit_order.append((node, level))
-            # if queue has left child: add child and it's level to queue, else, add None to queue
+            # if node has left child: add child and it's level to queue, else, add None to queue
             if node.has_left_child():
                 queue.enqueue((node.get_left_child(), level+1))
             else:
                 queue.enqueue((None, level+1))
-            # if queue has right child: add child and it's level to queue, else, add None to queue
+            # if node has right child: add child and it's level to queue, else, add None to queue
             if node.has_right_child():
                 queue.enqueue((node.get_right_child(), level+1))
             else:
                 queue.enqueue((None, level+1))
 
-        s = "Tree\n"
+        s = "Tree"
         previous_level = -1
         # traverse the visit_order list to get the nodes and placeholders
         for node, level in visit_order:
