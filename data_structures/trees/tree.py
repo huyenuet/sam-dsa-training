@@ -127,3 +127,60 @@ class Tree(object):
                     node = node.get_left_child()
                 else:
                     return False
+
+    def delete(self, target_value):
+        if self.root is None:
+            return None
+
+        previous_node = None
+        current_node = self.root
+        del_node = Node(target_value)
+
+        while current_node:
+            comparison = self.compare(del_node, current_node)
+            if comparison == 0:
+                if current_node.has_left_child() and current_node.has_right_child():
+                    # current_node is a parent who has 2 children
+                    right_sub_tree = current_node.get_right_child()
+                    # traverse through the left of sub tree until find the smallest value
+                    smallest_node = right_sub_tree.get_left_child()
+                    previous_node = right_sub_tree
+                    while smallest_node.get_left_child():
+                        smallest_node = smallest_node.get_left_child()
+                        previous_node = previous_node.get_left_child()
+
+                    # replace current_node's value by smallest node's value of right sub tree
+                    current_node.set_value(smallest_node.get_value())
+
+                    if smallest_node.has_right_child():
+                        previous_node.set_left_child(smallest_node.get_right_child())
+                    else:
+                        previous_node.set_left_child(None)
+                    break
+                elif current_node.has_left_child() and not current_node.has_right_child():
+                    # current_node is a parent who has 1 left child
+                    if previous_node.get_left_child() == current_node:
+                        previous_node.set_left_child(current_node.get_left_child())
+                    if previous_node.get_right_child() == current_node:
+                        previous_node.set_right_child(current_node.get_left_child())
+                    break
+                elif not current_node.has_left_child() and current_node.has_right_child():
+                    # current_node is a parent who has 1 right child
+                    if previous_node.get_left_child() == current_node:
+                        previous_node.set_left_child(current_node.get_right_child())
+                    if previous_node.get_right_child() == current_node:
+                        previous_node.set_right_child(current_node.get_right_child())
+                    break
+                else:
+                    # current_node is a leaf
+                    if previous_node.get_left_child() == current_node:
+                        previous_node.set_left_child(None)
+                    if previous_node.get_right_child() == current_node:
+                        previous_node.set_right_child(None)
+                    break
+            elif comparison == 1:
+                previous_node = current_node
+                current_node = current_node.get_right_child()
+            else:
+                previous_node = current_node
+                current_node = current_node.get_left_child()
