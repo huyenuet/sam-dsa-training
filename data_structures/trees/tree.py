@@ -116,7 +116,7 @@ class Tree(object):
         while True:
             comparison = self.compare(new_node, node)
             if comparison == 0:
-                return node
+                return True
             elif comparison == 1:
                 if node.has_right_child():
                     node = node.get_right_child()
