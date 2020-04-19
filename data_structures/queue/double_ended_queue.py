@@ -31,3 +31,8 @@ class Queue:
     
     def is_empty(self):
         return self.num_elements == 0
+
+    def top(self):
+        if self.is_empty():
+            return None
+        return self.head.value
