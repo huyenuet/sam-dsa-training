@@ -50,6 +50,7 @@ parent.add_group(child)
 print("test case 1")
 print(is_user_in_group("sub_child_user", parent))  # True
 print(is_user_in_group("child_user", parent))  # False
+print("expected output: True, False")
 
 
 # test case 2
@@ -57,7 +58,8 @@ print("\ntest case 2")
 child_user = "child_user"
 child.add_user(child_user)
 print(is_user_in_group("child_user", parent))  # True
-print(is_user_in_group("user", parent))  # True
+print(is_user_in_group("user", parent))  # False
+print("expected output: True, False")
 
 
 # test case 3
@@ -67,3 +69,4 @@ parent.add_user(user)
 print(is_user_in_group(None, parent))  # False
 print(is_user_in_group("", parent))  # False
 print(is_user_in_group("sub_child_user", parent))  # True
+print("expected output: False, False, True")
