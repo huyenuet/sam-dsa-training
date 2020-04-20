@@ -89,6 +89,8 @@ class DoubleLinkedListDict:
 class LRUCache:
     def __init__(self, max_size):
         self.cache = DoubleLinkedListDict()
+        if max_size <= 0 or not isinstance(max_size, int):
+            raise Exception("Cache size must be integer bigger than 0")
         self.max_size = max_size
 
     def is_full(self):
@@ -121,3 +123,15 @@ our_cache.set(5, 5)
 our_cache.set(6, 6)
 
 print(our_cache.get(3))  # returns -1 because the cache reached it's capacity and 3 was the least recently used entry
+
+
+our_cache = LRUCache(1)
+our_cache.set(pow(10, 100), pow(10, 100))
+print(our_cache.get(pow(10, 100)))  # returns 10^100
+
+print("\nExpected output: \n1, \n2, \n-1, \n-1, \n"
+      "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\n"
+      "Cache size must be integer bigger than 0")
+
+our_cache = LRUCache(0)
+our_cache = LRUCache(None)
