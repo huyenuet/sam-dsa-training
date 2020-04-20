@@ -46,6 +46,8 @@ class Huffman:
         :param string: a sentence needed to encode
         :return: encoded_data, tree
         """
+        if string == "" or string is None:
+            return string, None
         huffman_tree = self.build_huffman_tree(string)
         huffman_code = self._encode_recursion(huffman_tree, "", {})
         encoded_data = ""
@@ -70,9 +72,12 @@ class Huffman:
         :param huffman_tree: huffman tree used to decode data
         :return: decoded data
         """
+        if encoded_string == "":
+            return encoded_string
+
         decoded_string = ''
         index = -1
-        while index < len(encoded_string) - 2:
+        while index < len(encoded_string) - 1:
             decoded_char, index = self._decode_recursion(huffman_tree, encoded_string, index)
             decoded_string += decoded_char
         return decoded_string
@@ -107,6 +112,13 @@ class Huffman:
         for char, freq in sorted_char_freq_list:
             leaf_node = TreeNode(key=char, value=freq)
             q1.enqueue(leaf_node)
+
+        # edge case: there's only 1 node
+        if q1.size() == 1:
+            leaf_node = q1.dequeue()
+            new_node = TreeNode('$', leaf_node.value)
+            new_node.left = leaf_node
+            return new_node
 
         def _find_minimum(queue1: Queue, queue2: Queue):
             if queue2.is_empty():
@@ -152,19 +164,32 @@ def huffman_decoding(encoded_string, huffman_tree):
     return huffman.decoding(encoded_string, huffman_tree)
 
 
-if __name__ == "__main__":
-    code = {}
-    a_great_sentence = "The bird is the word"
+def test_function(a_great_sentence):
 
-    print("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+    # print("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
     print("The content of the data is: {}\n".format(a_great_sentence))
 
     encoded_data, tree = huffman_encoding(a_great_sentence)
 
-    print("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+    # print("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
     print("The content of the encoded data is: {}\n".format(encoded_data))
 
     decoded_data = huffman_decoding(encoded_data, tree)
 
-    print("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+    # print("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
     print("The content of the encoded data is: {}\n".format(decoded_data))
+
+
+# test case 1
+print("test case 1")
+test_function("The bird is the word")
+
+
+# test case 2
+print("\ntest case 2")
+test_function("aaaaaa")
+
+
+# test case 3
+print("\ntest case 3")
+test_function("")
