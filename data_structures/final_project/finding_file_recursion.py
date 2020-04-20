@@ -17,6 +17,8 @@ def find_files(suffix, path):
     Returns:
        a list of paths
     """
+    if path is None or len(path) == 0:
+        return
     path_ls = list()
     sub_dirs = os.listdir(path=path)
     for sub_dir in sub_dirs:
@@ -31,6 +33,18 @@ def find_files(suffix, path):
 
 
 # test the method find_files
+# test case 1
+print("test case 1")
 test_path = "./testdir"
 test_suffix = ".c"
+print(find_files(test_suffix, test_path))
+
+# test case 2
+print("test case 2")
+test_path = "."
+print(find_files(test_suffix, test_path))
+
+# test case 3
+test_path = ""
+test_suffix = ""
 print(find_files(test_suffix, test_path))
