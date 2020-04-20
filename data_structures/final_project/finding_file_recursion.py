@@ -30,15 +30,6 @@ def find_files(suffix, path):
     return path_ls
 
 
-# some useful os methods
-print(os.path.isdir('testdir'))
-print(os.path.isfile('finding_file_recursion.py'))
-print(os.listdir('.'))
-print(os.listdir('./testdir'))
-print(os.path.join('testdir', 'test'))
-print("./ex.py".endswith(".py"))
-
-
 # test the method find_files
 test_path = "./testdir"
 test_suffix = ".c"
