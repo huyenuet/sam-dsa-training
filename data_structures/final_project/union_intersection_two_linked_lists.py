@@ -134,7 +134,7 @@ print("\nTest case 3")
 linked_list_5 = LinkedList()
 linked_list_6 = LinkedList()
 
-element_1 = [1, 2, 3]
+element_1 = []
 element_2 = [1, 3, 5]
 
 for i in element_1:
