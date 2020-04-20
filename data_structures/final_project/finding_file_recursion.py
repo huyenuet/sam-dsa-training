@@ -38,13 +38,23 @@ print("test case 1")
 test_path = "./testdir"
 test_suffix = ".c"
 print(find_files(test_suffix, test_path))
+print(
+    "Expected output: ['./testdir/subdir3/subsubdir1/b.c', './testdir/t1.c', './testdir/subdir5/a.c', "
+    "'./testdir/subdir1/a.c']"
+)
 
 # test case 2
-print("test case 2")
+print("\ntest case 2")
 test_path = "."
 print(find_files(test_suffix, test_path))
+print(
+    "Expected output: ['./testdir/subdir3/subsubdir1/b.c', './testdir/t1.c', './testdir/subdir5/a.c', "
+    "'./testdir/subdir1/a.c']"
+)
 
 # test case 3
+print("\ntest case 3")
 test_path = ""
 test_suffix = ""
 print(find_files(test_suffix, test_path))
+print("Expected output: None")
