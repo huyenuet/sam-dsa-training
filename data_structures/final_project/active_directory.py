@@ -64,6 +64,6 @@ print(is_user_in_group("user", parent))  # True
 print("\ntest case 3")
 user = "user"
 parent.add_user(user)
-print(is_user_in_group("user", parent))  # True
-print(is_user_in_group("child_user", parent))  # True
+print(is_user_in_group(None, parent))  # False
+print(is_user_in_group("", parent))  # False
 print(is_user_in_group("sub_child_user", parent))  # True
