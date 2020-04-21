@@ -65,12 +65,6 @@ def union(llist_1, llist_2):
 
 
 def intersection(llist_1, llist_2):
-    """time complexity = O(n^2):
-        while, for: O(n),
-        union_set.add: O(1)
-        set.intersection: O(n)
-        union_ll.append: O(n)
-    """
     set_1 = set()
     set_2 = set()
     node = llist_1.head
