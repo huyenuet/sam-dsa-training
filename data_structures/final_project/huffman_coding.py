@@ -1,5 +1,4 @@
 from data_structures.queue.double_ended_queue import Queue
-import sys
 
 
 class TreeNode:
