@@ -41,46 +41,35 @@ class LinkedList:
         return size
 
 
+def convert_linked_list_to_set(llist: LinkedList):
+    output_set = set()
+    node = llist.head
+    while node:
+        output_set.add(node.value)
+        node = node.next
+    return output_set
+
+
+def convert_set_to_linked_list(input_set: set):
+    ll = LinkedList()
+    for item in input_set:
+        ll.append(item)
+
+    return ll
+
+
 def union(llist_1, llist_2):
-    """time complexity = O(n^2):
-        while, for: O(n),
-        union_set.add: O(1)
-        union_ll.append: O(n)
-    """
-    union_set = set()
-    node = llist_1.head
-    while node:
-        union_set.add(node.value)
-        node = node.next
-    node = llist_2.head
-    while node:
-        union_set.add(node.value)
-        node = node.next
-
-    union_ll = LinkedList()
-    for item in union_set:
-        union_ll.append(item)
-
-    return union_ll
+    union_set = convert_linked_list_to_set(llist_1)
+    union_set.union(convert_linked_list_to_set(llist_2))
+    return convert_set_to_linked_list(union_set)
 
 
 def intersection(llist_1, llist_2):
-    set_1 = set()
-    set_2 = set()
-    node = llist_1.head
-    while node:
-        set_1.add(node.value)
-        node = node.next
-    node = llist_2.head
-    while node:
-        set_2.add(node.value)
-        node = node.next
+    set_1 = convert_linked_list_to_set(llist_1)
+    set_2 = convert_linked_list_to_set(llist_2)
 
     intersection_set = set_1.intersection(set_2)
-    intersection_ll = LinkedList()
-    for item in intersection_set:
-        intersection_ll.append(item)
-    return intersection_ll
+    return convert_set_to_linked_list(intersection_set)
 
 
 # Test case 1
