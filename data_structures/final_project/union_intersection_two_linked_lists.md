@@ -11,6 +11,7 @@ Beside, there's already an intersection method implemented in Python Set
 ## The efficiency (time and space) of your solution.
 Time complexity:
 - traverse through the linked list, get all elements then add to a set: O(n)
-- union is adding all elements in 1 set: O(1)
+- union: O(len(set_1) + len(set_2) = O(n)
 - intersection is traversal through the shorter set, collect all elements that also appear on the other set: 
  O(min(len(set1), len(set2))
+ overall: time complexity = O(n)
