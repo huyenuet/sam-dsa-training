@@ -4,9 +4,16 @@ which compresses string to smaller size and information lossless
 
 
 ## The efficiency (time and space) of your solution.
-- build huffman tree: O(n)
-- get_sorted_char_frequency_list: O(n^2)
-- _encode_recursion: O(n)
-- _decode_recursion: O(n)
-- encoding: O(n^2)
+- get_sorted_char_frequency_list: O(nlogn)
+    + for char in text: O(n)
+    + for key, value in char_frequency_dict.items(): O(n)
+    + sorted(): nlogn
+- build_huffman_tree: O(nlogn)
+    + for, while: O(n)
+    + get_sorted_char_frequency_list: O(nlogn)
+- encoding: O(nlogn)
+    + build_huffman_tree: O(nlogn)
+    + trim_huffman_tree: O(n) (recursion)
+    + _encode_recursion: O(n)
+    + for: O(n)
 - decoding: O(n)

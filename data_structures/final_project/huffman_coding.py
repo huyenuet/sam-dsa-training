@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 from data_structures.queue.double_ended_queue import Queue
 
 
@@ -11,26 +13,17 @@ class TreeNode:
 
 def get_sorted_char_frequency_list(text):
     # count frequency of appearance of each character
-    char_frequency_dict = {}
+    char_frequency_dict = defaultdict(int)
     for char in text:
-        if char in char_frequency_dict:
-            char_frequency_dict[char] += 1
-        else:
-            char_frequency_dict[char] = 1
+        char_frequency_dict[char] += 1
 
-    # sort the char - frequency dict by frequency
+    # convert dict to a list of tuple (key, value)
     char_frequency_sorted_ls = list()
     for key, value in char_frequency_dict.items():
-        if not char_frequency_sorted_ls:
-            char_frequency_sorted_ls.append((key, value))
-            continue
+        char_frequency_sorted_ls.append((key, value))
 
-        for index, item in enumerate(char_frequency_sorted_ls):
-            if value < item[1]:
-                char_frequency_sorted_ls.insert(index, (key, value))
-                break
-        else:
-            char_frequency_sorted_ls.append((key, value))
+    # sort the list of tuple (char, frequency) by frequency
+    char_frequency_sorted_ls = sorted(char_frequency_sorted_ls, key=lambda item: item[1])
 
     return char_frequency_sorted_ls
 
