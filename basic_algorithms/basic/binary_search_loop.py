@@ -12,17 +12,14 @@ def binary_search(array, target):
     left = 0
     right = len(array) - 1
     mid = (left + right) // 2
-    while left < right:
+    while left <= right:
         if target == array[mid]:
             return mid
         elif target < array[mid]:
-            right = mid
+            right = mid - 1
             mid = (left + right) // 2
         else:
-            if left + 1 == right:
-                mid = right
-                continue
-            left = mid
+            left = mid + 1
             mid = (left + right) // 2
     return -1
 
@@ -53,5 +50,12 @@ test_function(test_case)
 array = [1, 2]
 target = 1
 index = 0
+test_case = [array, target, index]
+test_function(test_case)
+
+# test case 4
+array = [1, 2]
+target = 2
+index = 1
 test_case = [array, target, index]
 test_function(test_case)

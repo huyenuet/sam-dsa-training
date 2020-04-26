@@ -17,11 +17,11 @@ def binary_search_recursive(array, target, start_index, end_index):
     if target == array[mid]:
         return mid
     elif target < array[mid]:
-        return binary_search_recursive(array, target, 0, mid)
+        return binary_search_recursive(array, target, 0, mid-1)
     else:
-        if start_index + 1 == end_index:
-            return binary_search_recursive(array, target, start_index + 1, end_index)
-        return binary_search_recursive(array, target, mid, end_index)
+        # if start_index + 1 == end_index:
+        #     return binary_search_recursive(array, target, start_index + 1, end_index)
+        return binary_search_recursive(array, target, mid+1, end_index)
 
 
 def test_function(test_case):
@@ -50,5 +50,12 @@ test_function(test_case)
 array = [1, 2]
 target = 2
 index = 1
+test_case = [array, target, index]
+test_function(test_case)
+
+# test case 4
+array = [1, 2]
+target = 1
+index = 0
 test_case = [array, target, index]
 test_function(test_case)
