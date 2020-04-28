@@ -36,3 +36,21 @@ So with array implementation, `pop` and `push` have a time complexity of O(1)
 Pros and Cons between using array and linked list implementation is same with Stack
 #### Time complexity of stacks using linked lists
 `enqueue` and `dequeue`: O(1)
+
+### Hash map
+Don't use prime number that len(array) divided by prime number produces remainder = 1
+ex:
+```
+len(array) = 10, prime number = 31, coefficient = 1
+```
+
+Comparision function:
+
+```
+current_coefficient *= prime_number` (1 *= 31)
+current_coefficient = current_coefficient % len(array) (31 % 10 = 1)
+```
+
+If keys are permutations of n string characters, the bucket_index always be the same value
+
+for example: keys = "abcd", "bcad"
