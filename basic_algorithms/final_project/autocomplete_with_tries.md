@@ -14,4 +14,6 @@ when a suffix is found, add it to a suffix_list
     - find: O(L)
     - find all suffixes: O(W*L) where `W` is the number
      of suffixes
- - Space complexity: 
+ - Space complexity: O(W*L) where `W` is the number of words,
+ `L` is average length of the word
+ 
