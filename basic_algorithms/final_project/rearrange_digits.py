@@ -7,6 +7,9 @@ def rearrange_digits(input_list):
     Returns:
        (int),(int): Two maximum sums
     """
+    if len(input_list) < 2:
+        return None, None
+
     first_number = 0
     second_number = 0
 
@@ -71,4 +74,6 @@ test_function(test_case)
 test_case = [[4, 6, 2, 5, 9, 8], [964, 852]]
 test_function(test_case)
 
-print(rearrange_digits([1, 2, 9, 4, 5, 6]))
+print(rearrange_digits([1, 2, 9, 4, 5, 6]))  # should print (952, 641)
+print(rearrange_digits([1]))  # should print (None, None)
+print(rearrange_digits([]))   # should print (None, None)

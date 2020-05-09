@@ -54,8 +54,8 @@ for word in words:
     trie.insert(word)
 
 
-print(trie.find("ant").suffixes())
-print(trie.find("tri").suffixes())
-print(trie.find("f").suffixes())
-print(trie.find("fu").suffixes())
-print(trie.find("fa").suffixes())
+print(trie.find("ant").suffixes())  # should print ['hology', 'agonist', 'onym']
+print(trie.find("tri").suffixes())  # should print ['e', 'gger', 'gonometry', 'pod']
+print(trie.find("f").suffixes())  # should print ['un', 'unction', 'actory']
+print(trie.find("s").suffixes())  # should print []
+print(trie.find("").suffixes())  # should print all words

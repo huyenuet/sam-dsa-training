@@ -1,4 +1,10 @@
 def rotated_array_search(input_list, target):
+    input_length = len(input_list)
+
+    # input list is empty
+    if input_length == 0:
+        return -1
+
     # find pivot point
     pivot_index = 0
     for i in range(len(input_list) - 1):
@@ -47,3 +53,5 @@ test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])
 test_function([[6, 7, 8, 1, 2, 3, 4], 8])
 test_function([[6, 7, 8, 1, 2, 3, 4], 1])
 test_function([[6, 7, 8, 1, 2, 3, 4], 10])
+test_function([[], 10])
+test_function([[1], 10])
