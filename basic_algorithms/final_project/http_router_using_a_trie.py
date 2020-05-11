@@ -60,7 +60,8 @@ class Router:
             return "not found handler"
         return handler
 
-    def split_path(self, path):
+    @staticmethod
+    def split_path(path):
         path_elements = path.split("/")
         if path.endswith("/"):
             return path_elements[:-1]
