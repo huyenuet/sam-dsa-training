@@ -10,6 +10,7 @@ traverse through sub-array, and find the target value
 
 ### Efficiency
 - Time complexity:
-    - find pivot index: O(m)
+    - find pivot index: `O(m)` where m = pivot index, 
+    in the worst case, it will be `O(n)`
     - find target value's index: O(logn)
 - Space complexity: O(1)
