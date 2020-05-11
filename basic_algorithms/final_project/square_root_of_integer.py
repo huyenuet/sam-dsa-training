@@ -12,7 +12,7 @@ def sqrt(number: int):
 
 def sqrt_recursion(number, left, right):
     mid = (right + left) // 2
-    if mid * mid <= number < (mid + 1) * (mid + 1):
+    if mid ** 2 <= number < (mid + 1) ** 2:
         return mid
     if number < mid * mid:
         return sqrt_recursion(number, left, mid - 1)
