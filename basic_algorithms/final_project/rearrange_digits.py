@@ -17,7 +17,7 @@ def rearrange_digits(input_list):
 
     i = len(input_list) - 1
     while i >= 0:
-        first_number = first_number*10 + input_list[i]
+        first_number = first_number * 10 + input_list[i]
         i -= 1
         if i >= 0:
             second_number = second_number * 10 + input_list[i]
@@ -76,4 +76,4 @@ test_function(test_case)
 
 print(rearrange_digits([1, 2, 9, 4, 5, 6]))  # should print (952, 641)
 print(rearrange_digits([1]))  # should print (None, None)
-print(rearrange_digits([]))   # should print (None, None)
+print(rearrange_digits([]))  # should print (None, None)
