@@ -52,18 +52,23 @@ class LinkedList:
 
 class Blockchain:
     def __init__(self, data):
-        timestamp = datetime.utcnow()
+        timestamp = self.get_gmt_time()
         self.blockchain = LinkedList(Block(timestamp, data, None))
 
     def insert(self, data):
         last_block = self.blockchain.find_last_node_value()
         previous_hash = last_block.hash
-        timestamp = datetime.utcnow()
+        timestamp = self.get_gmt_time()
         new_block = Block(timestamp, data, previous_hash)
         self.blockchain.append(new_block)
 
+    @staticmethod
+    def get_gmt_time():
+        timestamp = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.%f%Z")
+        return timestamp
 
-block_chain = Blockchain("root")
-block_chain.insert("child 1")
-block_chain.insert("child 2")
-block_chain.insert("child 3")
+
+block_chain = Blockchain("Genesis block")
+block_chain.insert("block 1")
+block_chain.insert("block 2")
+block_chain.insert("block 3")
