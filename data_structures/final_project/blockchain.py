@@ -15,7 +15,8 @@ class Block:
     def calc_hash(self):
         sha = hashlib.sha256()
 
-        hash_str = self.data.encode('utf-8')
+        string_to_hash = str(self.data) + str(self.timestamp) + str(self.previous_hash)
+        hash_str = string_to_hash.encode('utf-8')
 
         sha.update(hash_str)
 
