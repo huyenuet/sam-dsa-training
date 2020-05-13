@@ -6,18 +6,28 @@ def rotated_array_search(input_list, target):
         return -1
 
     # find pivot point
-    pivot_index = 0
-    for i in range(len(input_list) - 1):
-        if input_list[i] > input_list[i + 1]:
-            pivot_index = i
-            break
+    pivot_index = find_pivot_index(input_list, 0, input_length-1)
+    if not pivot_index:
+        pivot_index = 0
 
-    if target == input_list[0]:
-        return 0
-    elif target > input_list[0]:
+    if target == input_list[pivot_index]:
+        return pivot_index
+    elif target > input_list[pivot_index]:
         return binary_search(input_list, target, 0, pivot_index)
     else:
         return binary_search(input_list, target, pivot_index + 1, len(input_list))
+
+
+def find_pivot_index(input_list, left, right):
+    mid = (left + right) // 2
+    if left > right:
+        return
+    if input_list[mid - 1] > input_list[mid]:
+        return mid
+    elif input_list[left] < input_list[mid] and input_list[right] < input_list[mid]:
+        return find_pivot_index(input_list, mid + 1, right)
+    else:
+        return find_pivot_index(input_list, left, mid - 1)
 
 
 def binary_search(input_list, target, left, right):
