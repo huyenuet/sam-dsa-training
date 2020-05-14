@@ -12,10 +12,9 @@ def rotated_array_search(input_list, target):
 
     if target == input_list[pivot_index]:
         return pivot_index
-    elif target > input_list[pivot_index]:
+    if target > input_list[pivot_index]:
         return binary_search(input_list, target, 0, pivot_index)
-    else:
-        return binary_search(input_list, target, pivot_index + 1, len(input_list))
+    return binary_search(input_list, target, pivot_index + 1, len(input_list))
 
 
 def find_pivot_index(input_list, left, right):
@@ -24,10 +23,9 @@ def find_pivot_index(input_list, left, right):
         return
     if input_list[mid - 1] > input_list[mid]:
         return mid
-    elif input_list[left] < input_list[mid] and input_list[right] < input_list[mid]:
+    if input_list[left] < input_list[mid] and input_list[right] < input_list[mid]:
         return find_pivot_index(input_list, mid + 1, right)
-    else:
-        return find_pivot_index(input_list, left, mid - 1)
+    return find_pivot_index(input_list, left, mid - 1)
 
 
 def binary_search(input_list, target, left, right):
@@ -36,10 +34,9 @@ def binary_search(input_list, target, left, right):
         return -1
     if input_list[mid] == target:
         return mid
-    elif input_list[mid] > target:
+    if input_list[mid] > target:
         return binary_search(input_list, target, left, mid - 1)
-    else:
-        return binary_search(input_list, target, mid + 1, right)
+    return binary_search(input_list, target, mid + 1, right)
 
 
 def linear_search(input_list, number):

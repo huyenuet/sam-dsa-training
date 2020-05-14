@@ -16,9 +16,8 @@ class Block:
         sha = hashlib.sha256()
 
         string_to_hash = str(self.data) + str(self.timestamp) + str(self.previous_hash)
-        hash_str = string_to_hash.encode('utf-8')
 
-        sha.update(hash_str)
+        sha.update(string_to_hash.encode('utf-8'))
 
         return sha.hexdigest()
 
@@ -40,7 +39,7 @@ class LinkedList:
         node.next = Node(value)
 
     def find_last_node_value(self):
-        """ Search the linked list for a node with the requested value and return the node. """
+        """ Return the last node's value. """
         if self.head is None:
             return None
 
