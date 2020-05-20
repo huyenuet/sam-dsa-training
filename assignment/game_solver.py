@@ -23,11 +23,15 @@ def solve_game(input_arr):
         raise Exception("Array size must be greater than or equal to 4")
 
     temp_arr = apply_rule_1(input_arr)
+    print_two_dimensional_arr(temp_arr)
 
     while not is_game_solved(input_arr):
         temp_arr = apply_rule_2(temp_arr)
+        print_two_dimensional_arr(temp_arr)
         temp_arr = apply_rule_3(temp_arr)
+        print_two_dimensional_arr(temp_arr)
         temp_arr = apply_rule_1(temp_arr)
+        print_two_dimensional_arr(temp_arr)
 
     return temp_arr
 
@@ -191,17 +195,21 @@ def apply_rule_3(input_arr):
     # check column
     for col_idx in range(0, arr_size - 1):
         for next_col_idx in range(col_idx + 1, arr_size):
-            different_position = []
+            different_positions = []
             for row_idx in range(0, arr_size):
                 if (
                     (input_arr[row_idx][col_idx] == 0 and input_arr[row_idx][next_col_idx] != 0)
                     or (input_arr[row_idx][col_idx] != 0 and input_arr[row_idx][next_col_idx] == 0)
                 ):
-                    different_position.append((row_idx, col_idx, next_col_idx))
+                    different_positions.append((row_idx, col_idx, next_col_idx))
+
+                if input_arr[row_idx][col_idx] == input_arr[row_idx][next_col_idx] == 0:
+                    different_positions = []
+                    break
 
             # 2 columns are the same except 2 cells
-            if len(different_position) == 2:
-                for row_idx, i, j in different_position:
+            if len(different_positions) == 2:
+                for row_idx, i, j in different_positions:
                     if input_arr[row_idx][i] == 1 and input_arr[row_idx][j] == 0:
                         input_arr[row_idx][j] = 2
                     elif input_arr[row_idx][i] == 2 and input_arr[row_idx][j] == 0:
@@ -221,6 +229,10 @@ def apply_rule_3(input_arr):
                     or (input_arr[row_idx][col_idx] != 0 and input_arr[next_row_idx][col_idx] == 0)
                 ):
                     different_positions.append((col_idx, row_idx, next_row_idx))
+
+                if input_arr[row_idx][col_idx] == input_arr[next_row_idx][col_idx] == 0:
+                    different_positions = []
+                    break
 
             # 2 rows are the same except 2 cells
             if len(different_positions) == 2:
