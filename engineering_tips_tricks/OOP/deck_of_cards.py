@@ -32,7 +32,7 @@ class CardDeck:
                 self.card_deck.pop(to_remove_index)
                 break
         else:
-            return "The card \"{}\" isn't existed in the Card Deck\n".format(str(deal_card))
+            return "The card \"{}\" isn't existed in the Card Deck".format(str(deal_card))
 
         return self.card_deck
 
@@ -48,17 +48,23 @@ class CardDeck:
 card_deck = CardDeck()
 print("Initial card deck:")
 print(card_deck.card_deck)
+print("number of cards in Card Deck:", len(card_deck.card_deck))
 print("")
 
 card = Card('8', '♥')
 print("Deal " + str(card))
 print(card_deck.deal(card))
+print("number of cards in Card Deck:", len(card_deck.card_deck))
 print("")
 
 card = Card('8', '♥')
 print("Deal " + str(card))
 print(card_deck.deal(card))
+print("number of cards in Card Deck:", len(card_deck.card_deck))
+print("")
 
 card = Card('1', '♣')
 print("Deal " + str(card))
 print(card_deck.deal(card))
+print("number of cards in Card Deck:", len(card_deck.card_deck))
+print("")
