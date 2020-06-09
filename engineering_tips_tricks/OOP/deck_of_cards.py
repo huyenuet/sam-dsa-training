@@ -27,12 +27,9 @@ class CardDeck:
         self.shuffle()
 
     def deal(self):
-        deck_size = len(self.card_deck)
-
-        if deck_size == 0:
+        if len(self.card_deck) == 0:
             return "The card deck is empty"
-
-        return self.card_deck.pop(deck_size - 1)
+        return self.card_deck.pop()
 
     def shuffle(self):
         self.card_deck = []
