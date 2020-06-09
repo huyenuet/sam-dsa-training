@@ -2,10 +2,11 @@ import random
 
 
 class Card:
-    card_value = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
-    card_suit = ['♥', '♦', '♣', '♠']
+    CARD_VALUE = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
+    CARD_SUIT = ['♥', '♦', '♣', '♠']
+
     # card suit can be either String or Symbol
-    # String example: card_suit = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
+    # String example: CARD_SUIT = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
 
     def __init__(self, value, suit):
         self.value = value
@@ -25,20 +26,18 @@ class CardDeck:
         self.card_deck = []
         self.shuffle()
 
-    def deal(self, deal_card: Card):
-        for card_index, card in enumerate(self.card_deck):
-            if card.is_equal(deal_card):
-                to_remove_index = card_index
-                self.card_deck.pop(to_remove_index)
-                break
-        else:
-            return "The card \"{}\" isn't existed in the Card Deck".format(str(deal_card))
+    def deal(self):
+        deck_size = len(self.card_deck)
 
-        return self.card_deck
+        if deck_size == 0:
+            return "The card deck is empty"
+
+        return self.card_deck.pop(deck_size - 1)
 
     def shuffle(self):
-        for suit in Card.card_suit:
-            for value in Card.card_value:
+        self.card_deck = []
+        for suit in Card.CARD_SUIT:
+            for value in Card.CARD_VALUE:
                 new_card = Card(value, suit)
                 self.card_deck.append(new_card)
         random.shuffle(self.card_deck)
@@ -51,20 +50,11 @@ print(card_deck.card_deck)
 print("number of cards in Card Deck:", len(card_deck.card_deck))
 print("")
 
-card = Card('8', '♥')
-print("Deal " + str(card))
-print(card_deck.deal(card))
+print("Deal:", card_deck.deal())
 print("number of cards in Card Deck:", len(card_deck.card_deck))
 print("")
 
-card = Card('8', '♥')
-print("Deal " + str(card))
-print(card_deck.deal(card))
-print("number of cards in Card Deck:", len(card_deck.card_deck))
-print("")
+for i in range(0, 52):
+    print("Deal:", card_deck.deal())
 
-card = Card('1', '♣')
-print("Deal " + str(card))
-print(card_deck.deal(card))
 print("number of cards in Card Deck:", len(card_deck.card_deck))
-print("")
