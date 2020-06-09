@@ -54,3 +54,39 @@ current_coefficient = current_coefficient % len(array) (31 % 10 = 1)
 If keys are permutations of n string characters, the bucket_index always be the same value
 
 for example: keys = "abcd", "bcad"
+
+# Basic algorithm
+## Sort
+### Bubble sort
+
+Approach:
+- iterate through the list, if `ls[i] > ls[j] and i < j` => swap them.
+Biggest element will be moved to the end of the list
+- Do the same thing with the rest
+
+Efficiency
+- time complexity: O(n^2)
+- space complexity: O(1)
+
+### Merge sort
+
+Approach:
+- partition: device the list into halves until list become a single element
+- merge: consider 1-element-list is sorted, compare 2 lists and merge them together
+
+Efficiency
+- time complexity: O(nlogn)
+- space complexity: O(n)
+
+### Quick sort
+Efficiency
+- time complexity: O(n^2) in the worst case, O(nlogn) in best and average case
+- space complexity: O(1)
+
+### Heap sort
+Efficiency
+- time complexity:
+    - heapify: O(logn)
+    - createAndBuildHeap: O(n)
+    - overall: O(nlogn)
+- space complexity: O(1)
