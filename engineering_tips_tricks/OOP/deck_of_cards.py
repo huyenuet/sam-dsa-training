@@ -2,11 +2,11 @@ import random
 
 
 class Card:
-    CARD_VALUE = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
-    CARD_SUIT = ['♥', '♦', '♣', '♠']
+    CARD_VALUES = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
+    CARD_SUITS = ['♥', '♦', '♣', '♠']
 
     # card suit can be either String or Symbol
-    # String example: CARD_SUIT = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
+    # String example: CARD_SUITS = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
 
     def __init__(self, value, suit):
         self.value = value
@@ -36,8 +36,8 @@ class CardDeck:
 
     def shuffle(self):
         self.card_deck = []
-        for suit in Card.CARD_SUIT:
-            for value in Card.CARD_VALUE:
+        for suit in Card.CARD_SUITS:
+            for value in Card.CARD_VALUES:
                 new_card = Card(value, suit)
                 self.card_deck.append(new_card)
         random.shuffle(self.card_deck)
